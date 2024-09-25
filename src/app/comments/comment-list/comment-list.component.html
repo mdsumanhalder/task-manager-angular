@@ -1,0 +1,8 @@
+<div *ngIf="comments.length > 0">
+    <h4>Comments</h4>
+    <ul>
+        <li *ngFor="let comment of comments">
+            {{ comment.text }} <small>{{ comment.createdAt | date }}</small>
+        </li>
+    </ul>
+</div>

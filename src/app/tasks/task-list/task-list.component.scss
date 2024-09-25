@@ -1,0 +1,54 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center items vertically */
+  padding: 10px; /* Consistent padding */
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  margin-bottom: 40px;
+
+  .logo {
+    h1 {
+      background: linear-gradient(135deg, #ffffff, #f0f0f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 24px;
+      margin: 0;
+      font-weight: bold;
+      display: inline-block;
+    }
+  }
+
+  .logout-button {
+    button {
+      display: inline-block;
+      padding: 10px 20px; /* Padding for button */
+      border: none; /* No border */
+      border-radius: 25px; /* Rounded corners */
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+
+      &:hover {
+        background: linear-gradient(135deg, #2575fc, #6a11cb);
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+}
+
+.task-list {
+  margin-top: 50px;
+  text-align: center;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,138 @@
+<!-- <nb-layout>
+    <nb-layout-header fixed>
+        <div class="header-container">
+            <div class="logo">
+                <h1>TaskManager</h1>
+            </div>
+            <div class="logout-button">
+                <button nbButton
+                        status="danger"
+                        (click)="logout()">Logout</button>
+            </div>
+        </div>
+    </nb-layout-header>
+
+    <nb-layout-column>
+        <h2 class="task-list">Task List</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Deadline</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of tasks">
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ task.deadline | date }}</td>
+                    <td>{{ task.priority }}</td>
+                    <td>{{ task.status }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </nb-layout-column>
+</nb-layout> -->
+
+<nb-layout>
+    <nb-layout-header fixed>
+        <div class="header-container">
+            <div class="logo">
+                <h1>TaskManager</h1>
+            </div>
+            <div class="logout-button">
+                <button nbButton
+                        status="danger"
+                        (click)="logout()">Logout</button>
+            </div>
+        </div>
+    </nb-layout-header>
+
+    <nb-layout-column>
+        <h2 class="task-list">Task List</h2>
+
+        <!-- Create Task Form -->
+        <div>
+            <h3>Create Task</h3>
+            <form [formGroup]="taskForm"
+                  (ngSubmit)="createTask()">
+                <input formControlName="title"
+                       placeholder="Title" />
+                <input formControlName="description"
+                       placeholder="Description" />
+                <input type="date"
+                       formControlName="deadline" />
+                <input formControlName="priority"
+                       placeholder="Priority" />
+                <select formControlName="status">
+                    <option value=""
+                            disabled
+                            selected>Status</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                <button nbButton
+                        status="primary"
+                        type="submit">Add Task</button>
+            </form>
+        </div>
+
+        <!-- Task List Table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Deadline</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of tasks">
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ task.deadline | date }}</td>
+                    <td>{{ task.priority }}</td>
+                    <td>{{ task.status }}</td>
+                    <td>
+                        <button nbButton
+                                (click)="editTask(task)">Edit</button>
+                        <button nbButton
+                                status="danger"
+                                (click)="deleteTask(task._id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Update Task Form -->
+        <div *ngIf="editingTask">
+            <h3>Update Task</h3>
+            <form [formGroup]="taskForm"
+                  (ngSubmit)="updateTask()">
+                <input formControlName="title"
+                       placeholder="Title" />
+                <input formControlName="description"
+                       placeholder="Description" />
+                <input type="date"
+                       formControlName="deadline" />
+                <input formControlName="priority"
+                       placeholder="Priority" />
+                <select formControlName="status">
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                <button nbButton
+                        status="success"
+                        type="submit">Update Task</button>
+            </form>
+        </div>
+    </nb-layout-column>
+</nb-layout>
